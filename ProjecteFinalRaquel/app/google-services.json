@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "810630679123",
+    "firebase_url": "https://finalprojectraquel.firebaseio.com",
+    "project_id": "finalprojectraquel",
+    "storage_bucket": "finalprojectraquel.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:810630679123:android:02de2220edd00ac1",
+        "android_client_info": {
+          "package_name": "com.example.rachel.projectefinalraquel"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "810630679123-lo24a3etodv6tntl2kg70j0pa6ei6lom.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBYk7G8kwe_cJLArEsl7R317uJEE4w8osA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
