@@ -14,15 +14,16 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
+import java.util.ArrayList;
+
+public class MapsActivity2 extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
-    private RefugioAnimal refugioAnimal;
-
+    public ArrayList<RefugioAnimal> todosLosrefugios=null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_maps);
+        setContentView(R.layout.activity_maps2);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
@@ -30,9 +31,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         //Obteniendo la instancia del Intent
         Intent intent = getIntent();
         //Extrayendo los parámetros extra que envio en el intent
-        refugioAnimal = (RefugioAnimal)intent.getSerializableExtra("refugioAnimal");
+        todosLosrefugios = (ArrayList<RefugioAnimal>)getIntent().getSerializableExtra("todosLosrefugios");
     }
-
 
 
     /**
@@ -60,13 +60,15 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }
         mMap.setMyLocationEnabled(true);//habilito mi ubicación actual dentro del mapa
         mostrarPuntos(googleMap);
-
     }
     public void mostrarPuntos(GoogleMap googleMap){
         mMap = googleMap;
-
-        final LatLng punto=new LatLng(Double.parseDouble(refugioAnimal.getLatitud()),Double.parseDouble(refugioAnimal.getLongitud()));
-        mMap.addMarker(new MarkerOptions().position(punto).title(refugioAnimal.getNombre()).snippet("Latitud: "+Double.parseDouble(refugioAnimal.getLatitud())+" Longitud:"+Double.parseDouble(refugioAnimal.getLongitud())).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ROSE)));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(punto));
+        LatLng punto;
+        //recorro el array que contiene todos los refugios
+        for (RefugioAnimal refugioAnimal: todosLosrefugios) {
+            punto = new LatLng(Double.parseDouble(refugioAnimal.getLatitud()), Double.parseDouble(refugioAnimal.getLongitud()));
+            mMap.addMarker(new MarkerOptions().position(punto).title(refugioAnimal.getNombre()).snippet("Latitud: " + Double.parseDouble(refugioAnimal.getLatitud()) + " Longitud:" + Double.parseDouble(refugioAnimal.getLongitud())).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ROSE)));
+            mMap.moveCamera(CameraUpdateFactory.newLatLng(punto));
+        }
     }
 }

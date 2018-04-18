@@ -79,14 +79,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        /*button2.setOnClickListener(new View.OnClickListener() {
+        button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(getApplicationContext(),MapsActivity.class);
+                Intent intent=new Intent(getApplicationContext(),MapsActivity2.class);
                 intent.putExtra("todosLosrefugios",todosLosrefugios);
                 startActivity(intent);
             }
-        });*/
+        });
         button3 = (Button) findViewById(R.id.button3);
         button3.setOnClickListener(new View.OnClickListener() {
             @Override

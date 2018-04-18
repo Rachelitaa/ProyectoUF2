@@ -2,4 +2,5 @@
     <string name="app_name">ProjecteFinalRaquel</string>
     <string name="title_activity_maps">Map</string>
     <string name="nombre_del_refugio">Nombre del refugio:</string>
+    <string name="title_activity_maps2">Map</string>
 </resources>
