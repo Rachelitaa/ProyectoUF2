@@ -16,22 +16,32 @@ import com.google.firebase.database.ValueEventListener;
 import org.w3c.dom.Text;
 
 public class MainActivity extends AppCompatActivity {
-    private TextView nombreSantuario;
+    private TextView RefugiosAnimales;
     private Button button2;
+    private Button button3;
     //creamos la referencia a la BD
     DatabaseReference mdatabaseReference= FirebaseDatabase.getInstance().getReference();
-    DatabaseReference mRootchild=mdatabaseReference.child("SantuarioAnimal").child("nombre");
+    DatabaseReference mRootchild=mdatabaseReference.child("RefugiosAnimales").child("nombre");
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        nombreSantuario=(TextView)findViewById(R.id.tvNombre);
+        RefugiosAnimales=(TextView)findViewById(R.id.tvNombre);
         button2=(Button)findViewById(R.id.button2);
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(getApplicationContext(),MapsActivity.class);
-                intent.putExtra("nombreSantuario",mRootchild.toString());
+                intent.putExtra("RefugiosAnimales",mRootchild.toString());
+                startActivity(intent);
+            }
+        });
+        button3=(Button)findViewById(R.id.button3);
+        button3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(getApplicationContext(),AnadirRefugio.class);
+                intent.putExtra("RefugiosAnimales",mRootchild.toString());
                 startActivity(intent);
             }
         });
@@ -44,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String texto=dataSnapshot.getValue().toString();//obtenemos el texto del textView y lo transformamos a String
-                nombreSantuario.setText(texto);
+                RefugiosAnimales.setText(texto);
             }
 
             @Override

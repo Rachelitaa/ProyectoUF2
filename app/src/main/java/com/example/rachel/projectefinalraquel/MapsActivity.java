@@ -67,7 +67,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         final LatLng punto1=new LatLng(40.437616,-3.9597459);
         final LatLng punto2=new LatLng(41.3947051,2.0086813);
         mMap.addMarker(new MarkerOptions().position(punto1).title(nombreSantuario).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ROSE)));
-        mMap.addMarker(new MarkerOptions().position(punto2).title("nombreSantuario").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ROSE)));
+        mMap.addMarker(new MarkerOptions().position(punto2).title("nombreSantuario").snippet("Population: 4,137,400").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ROSE)));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(punto1));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(punto2));
     }
