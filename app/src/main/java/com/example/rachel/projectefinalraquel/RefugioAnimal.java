@@ -18,6 +18,10 @@ public class RefugioAnimal  implements Serializable{
         this.longitud = longitud;
     }
 
+    public RefugioAnimal() {
+
+    }
+
     public String getNombre() {
         return nombre;
     }

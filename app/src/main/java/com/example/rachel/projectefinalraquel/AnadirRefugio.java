@@ -44,6 +44,7 @@ public class AnadirRefugio extends AppCompatActivity {
         mRef =  FirebaseDatabase.getInstance().getReferenceFromUrl("https://finalprojectraquel.firebaseio.com/");
         String mId = nombre;
         mDatabase = mRef.child("RefugiosAnimales").child(mId).setValue(refugioAnimal);
+
         Toast toast = Toast.makeText(getApplicationContext(), "Refugio añadido correctamente", Toast.LENGTH_LONG);
         toast.show();
 
