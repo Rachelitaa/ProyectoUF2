@@ -17,7 +17,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
-    private String nombreSantuario;
+    private RefugioAnimal refugioAnimal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +30,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         //Obteniendo la instancia del Intent
         Intent intent = getIntent();
         //Extrayendo los parámetros extra que envio en el intent
-        nombreSantuario = intent.getStringExtra("nombreSantuario");
+        refugioAnimal = (RefugioAnimal)intent.getSerializableExtra("refugioAnimal");
     }
 
 
@@ -64,11 +64,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
     public void mostrarPuntos(GoogleMap googleMap){
         mMap = googleMap;
-        final LatLng punto1=new LatLng(40.437616,-3.9597459);
-        final LatLng punto2=new LatLng(41.3947051,2.0086813);
-        mMap.addMarker(new MarkerOptions().position(punto1).title(nombreSantuario).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ROSE)));
-        mMap.addMarker(new MarkerOptions().position(punto2).title("nombreSantuario").snippet("Population: 4,137,400").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ROSE)));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(punto1));
+
+        final LatLng punto2=new LatLng(Double.parseDouble(refugioAnimal.getLatitud()),Double.parseDouble(refugioAnimal.getLongitud()));
+        //mMap.addMarker(new MarkerOptions().position(punto1).title(nombreSantuario).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ROSE)));
+        mMap.addMarker(new MarkerOptions().position(punto2).title(refugioAnimal.getNombre()).snippet("Latitud: "+Double.parseDouble(refugioAnimal.getLatitud())+" Longitud:"+Double.parseDouble(refugioAnimal.getLongitud())).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ROSE)));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(punto2));
     }
 }

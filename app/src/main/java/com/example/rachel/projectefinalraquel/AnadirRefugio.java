@@ -40,7 +40,7 @@ public class AnadirRefugio extends AppCompatActivity {
         String longitud=etLongitud.getText().toString();
         String latitud=etLatitud.getText().toString();
         //instancio un objeto refugioAnimal
-        RefugioAnimal refugioAnimal=new RefugioAnimal(nombre,longitud,latitud);
+        RefugioAnimal refugioAnimal=new RefugioAnimal(nombre,latitud,longitud);
         mRef =  FirebaseDatabase.getInstance().getReferenceFromUrl("https://finalprojectraquel.firebaseio.com/");
         String mId = nombre;
         mDatabase = mRef.child("RefugiosAnimales").child(mId).setValue(refugioAnimal);

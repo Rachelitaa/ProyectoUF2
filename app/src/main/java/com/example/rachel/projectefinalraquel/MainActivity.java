@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -23,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView RefugiosAnimales;
     private Button button2;
     private Button button3;
+    public ArrayList<RefugioAnimal>todosLosrefugios=new ArrayList<RefugioAnimal>();
     public static RefugioAnimal refugioAnimal;
     FirebaseListAdapter<RefugioAnimal>adapter;
     @Override
@@ -61,16 +63,27 @@ public class MainActivity extends AppCompatActivity {
                 TextView tvName = view.findViewById(R.id.tvrefugios);
                 tvName.setText(model.getNombre());
                 refugioAnimal =new RefugioAnimal(model.getNombre(),model.getLatitud(),model.getLongitud());
-
+                todosLosrefugios.add(refugioAnimal);
             }
         };
         lvrefugios.setAdapter(adapter);
+        lvrefugios.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?>adapterView, View view, int position, long id) {
+                RefugioAnimal refugioAnimal=(RefugioAnimal)adapterView.getItemAtPosition(position);
+
+                Intent intent=new Intent(getApplicationContext(),MapsActivity.class);
+                intent.putExtra("refugioAnimal",refugioAnimal);
+                startActivity(intent);
+
+            }
+        });
 
         /*button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(getApplicationContext(),MapsActivity.class);
-                //intent.putExtra("RefugiosAnimales",mRootchild.toString());
+                intent.putExtra("todosLosrefugios",todosLosrefugios);
                 startActivity(intent);
             }
         });*/
