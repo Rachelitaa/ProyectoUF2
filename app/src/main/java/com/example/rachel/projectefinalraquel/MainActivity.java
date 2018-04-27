@@ -47,7 +47,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        RefugiosAnimales = (TextView) findViewById(R.id.tvNombre);
         button2 = (Button) findViewById(R.id.button2);
         ListView lvrefugios = (ListView)findViewById(R.id.lvrefugios);
         DatabaseReference query = FirebaseDatabase.getInstance()

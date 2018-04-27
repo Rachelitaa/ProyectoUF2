@@ -5,6 +5,8 @@ import android.content.pm.PackageManager;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -15,6 +17,9 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
+    private Button btnSatelite;
+    private Button btnHibrido;
+    private Button btnNormal;
 
     private GoogleMap mMap;
     private RefugioAnimal refugioAnimal;
@@ -31,6 +36,27 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         Intent intent = getIntent();
         //Extrayendo los parámetros extra que envio en el intent
         refugioAnimal = (RefugioAnimal)intent.getSerializableExtra("refugioAnimal");
+        btnSatelite=(Button)findViewById(R.id.btnSatelite);
+        btnSatelite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
+            }
+        });
+        btnHibrido=(Button)findViewById(R.id.btnHibrido);
+        btnHibrido.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+            }
+        });
+        btnNormal=(Button)findViewById(R.id.btnNormal);
+        btnNormal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+            }
+        });
     }
 
 

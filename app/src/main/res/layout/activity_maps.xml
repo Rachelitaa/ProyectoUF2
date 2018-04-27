@@ -1,8 +1,60 @@
-<fragment xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:map="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/map"
-    android:name="com.google.android.gms.maps.SupportMapFragment"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.example.rachel.projectefinalraquel.MapsActivity" />
+    android:layout_height="match_parent">
+    <fragment
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.example.rachel.projectefinalraquel.MapsActivity" />
+
+    <Button
+        android:id="@+id/btnSatelite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/fui_transparent"
+        android:text=" Mapa satétite"
+        android:textColor="@color/colorAccent"
+        android:textColorLink="@color/colorAccent"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/btnHibrido"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/btnSatelite"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/btnSatelite"
+        android:layout_below="@+id/btnSatelite"
+        android:background="@color/fui_transparent"
+        android:text="Mapa híbrido "
+        android:textColor="@color/colorAccent"
+        android:textStyle="bold" />
+    <Button
+        android:id="@+id/btnNormal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/btnHibrido"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/btnHibrido"
+        android:layout_below="@+id/btnHibrido"
+        android:background="@color/fui_transparent"
+        android:text="Mapa Normal"
+        android:textColor="@color/colorAccent"
+        android:textStyle="bold" />
+</RelativeLayout>
+
+
+
+
+
+
+
+
+
+
+
